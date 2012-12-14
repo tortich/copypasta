@@ -1,5 +1,9 @@
 # Everything I have learned so far
 
+Comments
+# everything after the # will be viewed as comment and ignored by Ruby
+
+
 # METHODS
 
 puts 
@@ -17,3 +21,6 @@ gets
 gets.chomp
 # Receives input given by the user WITHOUT a newline at the end
 # Example: newvariable = gets.chomp
+
+Array
+# 
