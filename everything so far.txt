@@ -1,0 +1,19 @@
+# Everything I have learned so far
+
+# METHODS
+
+puts 
+# Writes to the screen WITH a newline at the end
+# Example: puts "Hello World!"
+
+print
+# Writes to the screen WITHOUT a newline at the end
+# Example: print "Hello World!"
+
+gets
+# Receives input given by the user WITH a newline at the end
+# Example: newvariable = gets
+
+gets.chomp
+# Receives input given by the user WITHOUT a newline at the end
+# Example: newvariable = gets.chomp
