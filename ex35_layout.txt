@@ -1,0 +1,14 @@
+BearGoldCthulu Layout
+
+Dark Room
+  - left (BEAR)
+    - taunt (OPEN DOOR)
+      - open door (GOLD ROOM)
+        - good job (EXIT)
+        - greedy bastard (DEAD)
+      - taunt bear (DEAD)
+    - take honey (DEAD)
+  - right (CHTULU)
+    - flee (DARK ROOM)
+    - eat own head (DEAD)
+  - everything else (STARVE)

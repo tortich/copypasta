@@ -27,6 +27,84 @@ Array
 #  					"Sandy",
 #						"Mandy"]
 # http://www.ruby-doc.org/core-1.9.3/Array.html
+# 
+# Using methods on Arrays
+# see p. 447ff of "Programming Ruby 1.9, The Pragmatic Programmer's Guide"
+#
+# .at(x)    # tries to return the item at position x, (-1) gives the last 
+#           # element, returns nil if position is not existant in the array
+# .clear    # empties the array
+# .empty?   # returns true if array is empty
+# .join     # returns the concatenation of every item inside the array
+# .join("-")# same as above, but puts - between the items
+# .pop      # deletes the last item of the array, returns whatever is removed, 
+#             or nil if the array is empty
+# .pop(5)   # same as .pop. but deletes the last 5 items of the array
+# .push()   # appends the given argument(s)
+# .replace  # replaces the contents of the array with the given argument(s)
+#
+
+Classes
+# Classes are more powerful versions of hashes and the foundation of "Object Oriented Programming".
+# Classes start with a capital letter (BooksInStore, ClassIsAwesome). 
+# A Class is definition, or a set of rules that define which characteristics the objects 
+# of that class will have. 
+# 
+# # Creating new objects of a class &
+# # Initialisation values of these objects
+# New objects of that class can be created by calling Classname.new. You can
+# define the start values (initial values) when the objects are created by using the initialize-method.
+# 
+# # Instance variables (@variable)
+# In order to not lose the content of the variables once the function ends, we transform the variables into
+# instance variables by writing the "@"-sign in front of it. This "instance variable" is now attached to 
+# the specific object and stored within that object. The "@" now becomes part of the name of the variable.
+# 
+# # attr_reader / Reading object variables ("attributes")
+# The instance variables are unique to each object and generally not accessible by other objects. In order to
+# access them it is necessary to include 
+# "attr_reader :nameofvariable1, :nameofvariable2" after the "class" line.
+# They then can be called like this "puts "Number = #{a.number}"
+#
+# attr_writer / Writing object variables ("attributes")
+# Writing to instance variables / attributes is enabled by including
+# "attr_writer :nameofvariable1, :nameofvariable2" after the "class" line.
+# 
+# attr_accessor / Reading & Writing to object variables ("attributes")
+# Enablining both read and write access to instance variables / attributes is enabled by including
+# "attr_accessor :nameofvariable1, :nameofvariable2" after the "class" line.
+# 
+#
+# # Naming conventions
+# @number     | Instance variable
+# :number     | the "name" of the variable number
+# number      | the "value" of the variable number
+#
+# # Functions
+# class.new   | Spawn a new object of the class
+# @variable.inspect | Returns the name of the instance variable
+#
+# class Something
+#   attr_reader :number
+# 
+#   def initialize()
+#     @number = 0
+#   end
+# end
+#
+# a = Something.new
+# 
+# or
+# 
+# class BooksInStore
+#   def initialize(isbn, price)
+#     @isbn = isbn
+#     @price = Float(price)
+#   end
+# end
+# 
+# a = BooksInStore.new("isbn1", 3.14)
+
 
 Comments
 # everything after the # will be viewed as comment and ignored by Ruby
@@ -36,7 +114,10 @@ Comparison of numbers and size
 # > greater-than
 # <= less-than-equal
 # >= greater-than-equal
+# <=> "spaceship operator, compares two values, returnig -1, 0, or +1 depending 
+#      on whether the first is less than, equal to, or greater than the second
 # == equal
+# === "case equality" http://truffles.me.uk/rubys-equality-operator
 # != not equal
 # <=> Combined comparison operator. Returns 0 if first operand equals second, 
 #											1 if first operand is greater than the second and 
@@ -80,10 +161,10 @@ Files
 # # Writing files
 # filename = ARGV.first
 # aFile = File.open("filename", "w")
-# aFile.write(text you want written in the file)
-# aFile.write(\n)
-# aFile.write(you can write a second line if you want etc.)
-# aFile.close()
+# aFile.write("text you want written in the file")
+# aFile.write("\n")
+# aFile.write("you can write a second line if you want etc.")
+# aFile.close("")
 # 
 # # Emptying files (Truncating)
 # filename = ARGV.first
@@ -141,13 +222,13 @@ Files
 # w		Write-only mode. Overwrites the file if the file exists. If the file 
 # 		does not exist, creates a new file for writing.
 # w+	Read-write mode. Overwrites the existing file if the file exists. If 
-#		the file does not exist, creates a new file for reading and writing.
+#		  the file does not exist, creates a new file for reading and writing.
 # a		Write-only mode. The file pointer is at the end of the file if the 
-#		file exists. That is, the file is in the append mode. If the file does 
-#		not exist, it creates a new file for writing.
+#	  	file exists. That is, the file is in the append mode. If the file does 
+#		  not exist, it creates a new file for writing.
 # a+	Read and write mode. The file pointer is at the end of the file if 
-#		the file exists. The file opens in the append mode. If the file does 
-#		not exist, it creates a new file for reading and writing.
+#		  the file exists. The file opens in the append mode. If the file does 
+#		  not exist, it creates a new file for reading and writing.
 
 Functions (aka "Methods")
 # 1. They name pieces of code the way variables name strings and numbers.
@@ -213,6 +294,25 @@ gets.chomp
 # Receives input given by the user WITHOUT a newline at the end
 # Example: newvariable = gets.chomp
 
+Hashes (Dictionaries, maps, associative arrays)
+# Similar to arrays, but you index the entries not by numbers, but by anything
+# you want to name it. When you store a value in a hash, you actually supply
+# two objects - the index (which is called the "key") - and the entry to be 
+# stored with that key. 
+# 
+# Creating hashes
+# hash = {:marke => 'Opel', :baujahr => '1998', :price => '23_000'}
+# 
+# Working with hashes
+# hash[:preis]      # gibt den beim key "preis" hinterlegten wert zurück
+# puts hash(:preis) # gibt den beim key "preis" hinterlegten wert zurück
+# hash.length       # returns the number of objects stored in the hash
+# hash.delete(:preis)   # deletes the key "preis" and returns its value      
+# hash.include? :preis  # returns "true" if key "preis" is present in the hash
+# hash.include? "name"  # returns "true" if key " "name" " is present in the hash
+# hash.empty?           # returns "true" if the hash has no keys stored in it
+# 
+
 IO
 # see "Files"
 
@@ -226,6 +326,7 @@ Math operators
 # - minus
 # / slash
 # * asterisk
+# ** exponential
 # % percent
 
 Multi-line Strings
@@ -246,6 +347,49 @@ puts
 print
 # Writes to the screen WITHOUT a newline at the end
 # Example: print "Hello World!"
+
+proc (Procedure)
+# Code stored in a variable is called procedure, or PROC
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+
+
+Ranges
+#  
+# Ranges are created using the .. and ... range operators.
+# .. creates an inclusive range
+# ... creates a range that excludes the specified high value
+# 
+# Examples:
+# 1..10
+# 'a'..'z'
+# 0..."cat".length
+#
+# range = []
+# for i in (0..5)
+# # appends 0, then 1, then 2, and so on to the array
+#   range.push(i)
+# end
+# 
+# range = 0...9
+# # populates range with numbers 0 to 8
+# # range.to_a # converts the range to an array [0, 1, 2, 3, 4, 5, 6, 7, 8]
+# 
+#
+# Ranges can be converted to arrays using (1..10).to_a
+#
+# Methods usable on ranges
+# range.include?(5) # is 5 included in the range?
+# range.min # delivers the minimum value of the range
+# range.max # delivers the maximum value of the range
+# range.reject {|i| i < 5 } # delivers all items >= 5
+# range.inject(:+) # delivers the sum of all items in the range
+
 
 require
 # You have to tell Ruby which libraries. require loads the library (including 
@@ -290,6 +434,16 @@ String interpolation
 #
 # puts "The variable is #{weather.length} bytes long."
 
+Symbols
+# Symbols are constant names that you don't have to predeclare and that are 
+# guaranteed to be unique. A symbol starts with a colon and is normally followed
+# by some kind of name. Symbols are frequently used as keys in hashes.
+# 
+# Example:
+# ROOMS = {
+#   :key => 'value'     # :key is a symbol 
+# }
+
 Variables
 # Local variables begin with a lowercase letter or _. 
 # The scope of a local variable ranges from class, module, def, or do to 
@@ -306,3 +460,6 @@ Variables
 # Another method of getting the same information is by using the .kind_of? method:
 # b.kind_of? Integer
 # => True
+# 
+# b.empty?
+# => returns true if no value has been stored in the variable

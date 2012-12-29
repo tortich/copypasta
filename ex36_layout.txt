@@ -1,0 +1,40 @@
+game of clones
+
+hangar [OK]
+  - raumschiff [OK]
+    - Captain: Raumschiff ordnen (YES RAUMSCHIFF) [OK]
+      - ja (2 Clones Bezahlung) [OK]
+      - nein (RAUMSCHIFF) [OK]
+    - Commander: Blumen holen, Hochzeitstag vergessen (YES RAUMSCHIFF) [OK]
+      - ja (RAUMSCHIFF) [OK]
+      - nein (RAUMSCHIFF) [OK]
+    - HANGAR [OK]
+  - getränkeautomat [OK]
+    # ein getränk kostet 2 clones (YES HANGAR) [OK]
+      - cola [OK]
+    - HANGAR [OK]
+  - Fremder [OK]
+    - würfelspiel (YES FREMDER) [OK]
+    - HANGAR [OK]
+
+
+ToDo: 
+- Clones einführen (globale variable?) die man vom commander bekommt, mit der man getränke kaufen kann
+- Blumenhändler einfügen
+    # Blumen für 12 clones
+      - kaufen (BLUMENHÄNDLER)
+      - nicht kaufen (BLUMENHÄNDLER)
+    # Grußkarte für 4 Clones
+    - HANGAR
+- Fremder mit Kaffeoption ausstatten
+    - Will Kaffee (YES HANGAR)
+        - Kaffee geben
+          - Gutschein für Blumenstrauß
+- Fremder mit dialog / hintergrund / aufträge
+    - reden
+    - würfelspiel mit geldeinsatz (gewinn und verlustmöglichkeit!)
+    - treten
+      - holt seine homies (DEAD)    
+Done
+- Vor jede "Sprachausgabe" schreiben wer es gesagt hat (Bsp: "Commander: \"Hey Du!\"") [OK]
+

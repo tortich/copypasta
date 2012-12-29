@@ -1,0 +1,58 @@
+= ..ssoorrtt
+
+(from ruby core)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  AArrrraayy
+------------------------------------------------------------------------------
+  ary.sort                   -> new_ary
+  ary.sort {| a,b | block }  -> new_ary
+   
+
+------------------------------------------------------------------------------
+
+Returns a new array created by sorting self. Comparisons for the sort will be
+done using the <=> operator or using an optional code block. The block
+implements a comparison between _a and _b, returning -1, 0, or +1. See also
+Enumerable#sort_by.
+
+  a = [ "d", "a", "e", "c", "b" ]
+  a.sort                    #=> ["a", "b", "c", "d", "e"]
+  a.sort {|x,y| y <=> x }   #=> ["e", "d", "c", "b", "a"]
+
+
+(from ruby core)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  EEnnuummeerraabbllee
+------------------------------------------------------------------------------
+  enum.sort                     -> array
+  enum.sort {| a, b | block }   -> array
+   
+
+------------------------------------------------------------------------------
+
+Returns an array containing the items in _e_n_u_m sorted, either according
+to their own <=> method, or by using the results of the supplied block. The
+block should return -1, 0, or +1 depending on the comparison between _a and
+_b. As of Ruby 1.8, the method Enumerable#sort_by implements a built-in
+Schwartzian Transform, useful when key computation or comparison is expensive.
+
+  %w(rhea kea flea).sort         #=> ["flea", "kea", "rhea"]
+  (1..10).sort {|a,b| b <=> a}   #=> [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+
+
+(from ruby core)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  NNeett::::IIMMAAPP
+------------------------------------------------------------------------------
+  sort(sort_keys, search_keys, charset)
+
+------------------------------------------------------------------------------
+
+Sends a SORT command to sort messages in the mailbox. Returns an array of
+message sequence numbers. For example:
+
+  p imap.sort(["FROM"], ["ALL"], "US-ASCII")
+  #=> [1, 2, 3, 5, 6, 7, 8, 4, 9]
+  p imap.sort(["DATE"], ["SUBJECT", "hello"], "US-ASCII")
+  #=> [6, 7, 8, 1]
+
+See [SORT-THREAD-EXT] for more details.
+
+
